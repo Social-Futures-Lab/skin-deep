@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Barrett"
+  given-names: "Teanna"
+- family-names: "Chen"
+  given-names: "Quan Ze"
+- family-names: "Zhang"
+  given-names: "Amy X."
+title: "Skin Deep: Investigating Subjectivity in Skin Tone Annotations for Computer Vision Benchmark Datasets"
+version: 1.0
+doi: 10.1145/3593013.3594114
+date-released: 2023-05-16
+url: "https://github.com/Social-Futures-Lab/skin-deep"
+preferred-citation:
+  type: conference-paper
+  authors:
+    - family-names: "Barrett"
+      given-names: "Teanna"
+    - family-names: "Chen"
+      given-names: "Quan Ze"
+    - family-names: "Zhang"
+      given-names: "Amy X."
+  doi: "10.1145/3490099.3511141"
+  isbn: "979-8-4007-0192-4/23/06"
+  publisher: "Association for Computing Machinery"
+  start: 0
+  end: 15
+  title: "Skin Deep: Investigating Subjectivity in Skin Tone Annotations for Computer Vision Benchmark Datasets"
+  year: 2023
+  booktitle: "2023 ACM Conference on Fairness, Accountability, and Transparency"
+  location: "Chicago, IL, USA"
+  series: "FAccT '23"
+  keywords: "skin tone annotation, model evaluation, fairness benchmark datasets, facial recognition, computer vision"
