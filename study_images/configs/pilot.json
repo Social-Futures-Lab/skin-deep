@@ -1,0 +1,92 @@
+{
+  "type": "Demo",
+  "tutorial": {
+    "task": {"url":"data/Pilot/tutorialexample.jpg"},
+    "lower": {"lower": 0.18, "upper": 0.54},
+    "higher": {"lower": 0.36,"upper": 0.63}
+  },
+  "seed": [
+    {"url":"data/Scale_Anchors/1MS.jpg", "lower": 0.09, "upper": 0.09 },
+    {"url":"data/Scale_Anchors/2MS.jpg", "lower": 0.18, "upper": 0.18 },
+    {"url":"data/Scale_Anchors/3MS.jpg", "lower": 0.27, "upper": 0.27 },
+    {"url":"data/Scale_Anchors/4MS.jpg", "lower": 0.36, "upper": 0.36 },
+    {"url":"data/Scale_Anchors/5MS.jpg", "lower": 0.45, "upper": 0.45 },
+    {"url":"data/Scale_Anchors/6MS.jpg", "lower": 0.54, "upper": 0.54 },
+    {"url":"data/Scale_Anchors/7MS.jpg", "lower": 0.63, "upper": 0.63 },
+    {"url":"data/Scale_Anchors/8MS.jpg", "lower": 0.72, "upper": 0.72 },
+    {"url":"data/Scale_Anchors/9MS.jpg", "lower": 0.81, "upper": 0.81 },
+    {"url":"data/Scale_Anchors/10MS.jpg", "lower": 0.9, "upper": 0.9 }
+  ],
+  "anchors": [
+    {
+      "value": 0.09,
+      "label": "#f6ede4"
+    },
+    {
+      "value": 0.18,
+      "label": "#f3e7db"
+    },
+    {
+      "value": 0.27,
+      "label": "#f7ead0"
+    },
+    {
+      "value": 0.36,
+      "label": "#eadaba"
+    },
+    {
+      "value": 0.45,
+      "label": "#d7bd96"
+    },
+    {
+      "value": 0.54,
+      "label": "#a07e56"
+    },
+    {
+      "value": 0.63,
+      "label": "#825c43"
+    },
+    {
+      "value": 0.72,
+      "label": "#604134"
+    },
+    {
+      "value": 0.81,
+      "label": "#3a312a"
+    },
+    {
+      "value": 0.9,
+      "label": "#292420"
+    }
+  ],
+  "labels": {
+    "high": "Darker",
+    "low": "Lighter",
+    "neighbors": {
+      "lower": "Lighter",
+      "nlower": "not Lighter",
+      "higher": "Darker",
+      "nhigher": "not Darker"
+    }
+  },
+  "tasks": [
+    {
+      "url": "data/Pilot/t1.jpg"
+    },
+    {
+      "url": "data/Pilot/t2.jpg"
+    },
+    {
+      "url": "data/Pilot/t3.jpg"
+    },
+    {
+      "url": "data/Pilot/t4.jpg"
+    },
+    {
+      "url": "data/Pilot/t5.jpg"
+    },
+    {
+      "url": "data/Pilot/t6.jpg"
+    }
+  ]
+}

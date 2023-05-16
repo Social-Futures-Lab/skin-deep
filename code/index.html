@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recruitment Document</title>
+    <!-- use ui-primitives -->
+    <link rel="stylesheet" href="css/ui-primitives.css" />
+    <!-- base layout -->
+    <link rel="stylesheet" href="css/reboot.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/more-layout.css" />
+    <style>
+      .participant-id-area {
+        margin: 10px 5px;
+        border: 1px dotted #ccc;
+        border-radius: 2px;
+        padding: 5px;
+      }
+    </style>
+
+    <script src="js/splash.js"></script>
+  </head>
+  <body>
+    <div class="container primitive-ui">
+      <noscript>
+         If you see this text, your browser does not support dynamic content
+         (JavaScript) or it has been disabled. This study website requires JavaScript.
+      </noscript>
+      <div class="paginator">
+        <div id="main" class="page current">
+          <form id="main-form" action="./annotate.html" method="GET" autocomplete="off">
+            <h1>Participate in the skin tone annotation study</h1>
+            <p>Welcome to the skin tone annotation study. In this study you will be asked to annotate the skin tone of subjects depicted in images along a scale. </p>
+
+            <p>
+              If you have not been assigned a participant ID before, please select "I'm a new participant". You will get a randomly generated participant ID.
+            </p>
+
+            <p>
+              Open <a href="https://forms.gle/REDACTED">https://forms.gle/REDACTED_PLEASE_USE_YOUR_OWN_RECRUITMENT_FORM</a> and fill in your name and the participant ID assigned.
+              Then come back to this page and click "Start" to start the annotation.
+            </p>
+
+            <div class="new-participant">
+              <label>
+                <input type="radio" name="mode" value="new" id="radio-choice-new"/>
+                I'm a new participant. Give me a participant ID.
+              </label>
+
+              <div class="participant-id-area" id="more-new" style="display: none;">
+                Your participant id is:
+                <span id="participant-id">XXX-XXX-XXXX</span>
+              </div>
+
+            </div>
+            <div class="existing-participant">
+              <label>
+                <input type="radio" name="mode" value="existing" id="radio-choice-existing"/>
+                I'm returning. My participant ID was:
+              </label>
+              <div class="participant-id-area" id="more-existing" style="display: none;">
+                Your participant id is:
+                <input type="text" value="" id="participant-id-input" />
+              </div>
+            </div>
+
+
+
+            <input type="hidden" name="workerId" value="" />
+            <input type="hidden" name="config" value="" />
+            <input type="hidden" name="assignmentId" value="" />
+            <input type="hidden" name="hitId" value="inperson"/>
+            <input type="hidden" name="platform" value="mturk"/>
+            <input type="hidden" name="turkSubmitTo" value="https://CHANGE_THIS_TO_THE_SERVER_YOUR_BACKEND_RUNS_ON"/>
+            <button id="start" class="disabled button">Start</button>
+            <div class="alert alert-warning">
+              <p><strong>Task recruitment is currently closed. Thanks for your interest.</strong></p>
+            </div>
+          </form>
+          <div class="alert alert-warning" style="margin-top: 10px;">
+            <p>
+              <strong>Note:</strong>
+              Some images in this task are drawn from medical datasets and may depict skin infections.
+              <u>These images may be unsettling and cause discomfort.</u>
+              You may chose to exit the task at any point.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div> <!-- closes container -->
+  </body>
+</html>

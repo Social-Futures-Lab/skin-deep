@@ -1,0 +1,34 @@
+<!--
+  THIS IS NOT A FULL HTML PAGE
+
+  Please paste the code below this comment into the mechanical turk HIT designer
+
+  Replace the amt-shim-target with your target URL
+
+  If you need to specify additional parameters in your CSV file, you
+    can also make copies of the amt-shim-paramter div and add additional
+    parameters.
+-->
+
+<div class="amt-shim-parameter" amt-shim-param="group">${GROUP}</div>
+<div class="amt-shim-parameter" amt-shim-param="namespace">skintone</div>
+<div class="amt-shim-parameter" amt-shim-param="config">${CONFIG}</div>
+<div class="amt-shim-parameter" amt-shim-param="platform">mturk</div>
+<div class="amt-shim-target">https://REPLACE_WITH_HOSTED_PATH_FOR_THIS_DIR/annotate.html</div>
+
+<!-- You do not need to edit below this line -->
+
+<style>
+  .amt-shim-hidden, .amt-shim-target, .amt-shim-parameter { display:none; }
+  #amd-shim-notification { text-align: center; }
+</style>
+<script type="text/javascript" src="https://jabbany.github.io/amt-shim-template/common/trampoline.js"></script>
+
+<div class="amt-shim-hidden">
+  <!-- If properly implemented these values will never be used -->
+  <input type="text" name="fake-input" value="" />
+  <input type="submit" name="fake-submit-button" value="Submit" />
+</div>
+
+<!-- Used for debug messages -->
+<div id="amd-shim-notification"></div>

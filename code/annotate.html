@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTurk Document</title>
+    <!-- use ui-primitives -->
+    <link rel="stylesheet" href="css/ui-primitives.css" />
+    <!-- base layout -->
+    <link rel="stylesheet" href="css/reboot.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/more-layout.css" />
+    <script src="js/ui-primitives.js"></script>
+    <script src="js/mturk.js"></script>
+    <script src="js/task-manager.js"></script>
+    <script src="js/goldilocks.js"></script>
+  </head>
+  <body>
+    <div class="container primitive-ui">
+      <noscript>
+         If you see this text, your browser does not support dynamic content
+         (JavaScript) or it has been disabled. This study website requires JavaScript.
+      </noscript>
+      <div class="paginator">
+        <div id="error" class="page">
+          <h1>Error</h1>
+          <p>An error has occurred in the application.</p>
+          <p id="error-description"></p>
+          <p>
+            If you believe this message was given in error, you can try clicking
+            <a href="#" id="error-reset">here</a> to reset the task state.
+            Note: Resetting the task will cause you to lose your progress.
+          </p>
+        </div>
+        <div id="intro" class="page">
+          <h1>Introduction</h1>
+          <p>
+            We are a research group conducting a study on the subjectivity of human skin tone annotations. In this task, you will be asked
+            to <strong>annotate your skin tone and the skin tone of others by ranking an icon and images (respectively) on a scale</strong>
+            using the interface we provide. Below is a brief overview of the tasks in this experiment:
+          </p>
+          <ul>
+            <li>
+              We will first collect your consent for participation and then
+              present a brief tutorial on how to use the tool.
+            </li>
+            <li>
+              You will then be asked to identify your own skin tone along the given scale.
+            </li>
+            <li>
+              Following this, you will be presented with a series of six (6) images of human subjects.
+            </li>
+            <li>
+              For each item, you will be asked to place it onto the scale based on the the human subject’s overall skin tone (predominant complexion) by first finding the lightest tone where the subject may be placed on the scale followed by finding the darkest tone where the subject can be placed.
+            </li>
+          </ul>
+          <!--
+          <p>
+            For this experiment, you will be paid $8.50 for completing the task in full. If you exit the page before completing the task, you will paid $2.50 base + $1.00 per image annotated. We expect the task to require approximately 30 minutes of your time. <strong>We will be checking your answers manually before distributing the bonus.</strong> If it is apparent that no effort was made to provide a genuine annotation, the bonus for that image will not be given.
+          </p>
+          -->
+          <p>
+            For this offline recruitment of the experiment, you will be paid via a <strong>$10 gift card</strong>.
+            Make sure to fill out this form: <a href="https://forms.gle/REDACTED_FOR_CODE_RELEASE">https://forms.gle/PLEASE_MAKE_YOUR_OWN_FORM</a>
+          </p>
+          <div class="alert alert-warning">
+            <p>
+              <strong>Note:</strong> Some images in this task are drawn from medical datasets and may depict skin infections.
+              <u>These images may be unsettling and cause discomfort.</u> If you can no longer complete the task please exit the study using the "Exit" button at the bottom left of the page.
+            </p>
+          </div>
+          <p>
+            <strong>Note:</strong> You may only participate in this study <strong>once</strong>.
+            There is no compensation for <i>duplicate</i> submissions on this HIT after your first.
+          </p>
+        </div>
+        <div id="consent" class="page">
+          <h1>Consent</h1>
+          <p>
+            We are asking you to be in a research study.
+            The purpose of this consent form is to give you the information you
+            will need to help you decide whether to be in the study or not.
+            <strong>
+            Please use the link at the bottom to view (and retain) a
+            full copy of the consent form.
+            </strong>
+            <br/>
+            Below we have taken an excerpt of the main anticipated risks of
+            participation in study:
+          </p>
+          <p class="box">
+            This task involves the self-identification of skin tone, as well as the annotation of medical images of infected skin. There may be discomfort in providing personal information such as perceived skin tone and viewing medical images may be discomforting or stressful. Given the historical harm of classifying skin tone and other phenotypical features related to race or ethnicity, the annotation task may cause momentary discomfort. We do not anticipate further risks.
+          </p>
+          <p>
+            <strong>Click <a href="Skin_Tone_Consent_Form.pdf" target="_blank">here</a>
+            to view and download a copy of the full consent form.</strong>
+            If you have further questions about this study, you may contact
+            the coordinator, Teanna Barrett (teanna.barrett@bison.howard.edu).
+          </p>
+          <p>
+            If you have read the full consent form and agree to take part in
+            this study, click the "Next" button to continue. If you do not want
+            to participate, please exit the site.
+          </p>
+        </div>
+        <div id="demo-survey" class="page">
+          <h1>Pre-Task Demographic Survey</h1>
+          <p>
+            Thank you for consenting to the HIT! Before proceeding, please
+            provide the following demographic information. This information
+            will only be used for assessing the demographic make up of the
+            participant pool for the study.
+          </p>
+          <form id="likert-form-2">
+            <div class="form-group">
+              <label class="main-label" for="demographics-age">Age: (number)</label>
+              <input id="demographics-age" class="form-control"
+                type="number" name="age" min="18"
+                placeholder="Please input age" required="required">
+            </div>
+            <div class="form-group">
+              <label class="main-label">
+                Gender Identity:
+              </label>
+              <p>
+                If needed, refer <a href="https://www.medicalnewstoday.com/articles/types-of-gender-identity#types-of-gender-identity" target="_blank">this explainer</a> for more information about the various gender identities listed and unlisted in this question.
+              </p>
+              <ul style="list-style: none;">
+                <li>
+                  <input id="demo-gender-female" type="checkbox" name="gender" value="female" required="required"/>
+                  <label for="demo-gender-female">Female</label>
+                </li>
+                <li>
+                  <input id="demo-gender-male" type="checkbox" name="gender" value="male" required="required"/>
+                  <label for="demo-gender-male">Male</label>
+                </li>
+                <li>
+                  <input id="demo-gender-nb" type="checkbox" name="gender" value="non-binary" required="required"/>
+                  <label for="demo-gender-nb">Non-binary</label>
+                </li>
+                <li>
+                  <input id="demo-gender-queer" type="checkbox" name="gender" value="gender-queer" required="required"/>
+                  <label for="demo-gender-queer">Genderqueer</label>
+                </li>
+                <li>
+                  <input id="demo-gender-agender" type="checkbox" name="gender" value="agender" required="required"/>
+                  <label for="demo-gender-agender">Agender</label>
+                </li>
+                <li>
+                  <input id="demo-gender-unlisted" type="checkbox" name="gender" value="not-listed" required="required"/>
+                  <label for="demo-gender-unlisted">Not Listed</label>
+                </li>
+              </ul>
+            </div>
+            <div class="form-group">
+              <label class="main-label">Ethnicity:</label>
+              <ul style="list-style: none;">
+                <li>
+                  <input id="demo-ethn-aa" type="checkbox" name="race" value="black" required="required"/>
+                  <label for="demo-ethn-aa">Black/African American</label>
+                </li>
+                <li>
+                  <input id="demo-ethn-white"type="checkbox" name="race" value="white" required="required"/>
+                  <label for="demo-ethn-white">White</label>
+                </li>
+                <li>
+                  <input id="demo-ethn-mideast"type="checkbox" name="race" value="middle-eastern" required="required"/>
+                  <label for="demo-ethn-mideast">North African/Middle Eastern</label>
+                </li>
+                <li>
+                  <input id="demo-ethn-latinx"type="checkbox" name="race" value="latino" required="required"/>
+                  <label for="demo-ethn-latinx">Latino/Hispanic</label>
+                </li>
+                <li>
+                  <input id="demo-ethn-sea"type="checkbox" name="race" value="asian" required="required"/>
+                  <label for="demo-ethn-seaa">South/East Asian</label>
+                </li>
+                <li>
+                  <input id="demo-ethn-nativeam" type="checkbox" name="race" value="native-american" required="required"/>
+                  <label for="demo-ethn-nativeam">Native American/Alaskan Native</label>
+                </li>
+                <li>
+                  <input id="demo-ethn-unlisted" type="checkbox" name="race" value="not-listed-race" required="required"/>
+                  <label for="demo-ethn-unlisted">Not Listed</label>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+        <div id="training" class="page">
+          <h1>Annotation Tutorial</h1>
+          <p>
+            In this training example, we will guide you through the process
+            of annotating the skin tone of a single example. In this example case, we will
+            be placing a photo of a person on a scale based on your estimate
+            of their <strong>predominant skin tone</strong>. Since there is always some
+            uncertainty in the apparent skin tone of a person in a photo (lighting, clarity of photo, etc.), we will instead annotate the picture
+            by <strong>finding the upper and lower bounds</strong> of the image subject's skin tone
+            using skin tone color swatches as reference. Example images of people will also be placed along the scale for you to compare with the given image.
+          </p>
+          <p>
+            <strong>Note</strong>: Please disable any display brightness/color adjustment software, remove any color-adjusting screen protectors and adjust the brightness level to what is comfortable for you to clearly see the images and scale. These measures will ensure a more consistent environment for viewing the skin tone of image subjects.
+          </p>
+          <div id="training-step-0-dl" class="subpage">
+            <h2>Step 1: Find lower tone bound</h2>
+            <p>
+              For this step we're trying to find the lower bound of the image subject’s skin tone.
+              This means we want to find out the <i>darkest</i> position the person
+              can be placed on the scale. Using the slider below, compare the current
+              photo against the existing skin tone types on the scale.
+            </p>
+            <div class="alert alert-warning">
+              <p>
+                Scroll the slider handle from <strong>left to right</strong>.
+                Compare the current photo to the skin tone swatches on its left and right as
+                you're sliding the handle. Use the examples underneath the slider
+                to quickly skip over areas
+              </p>
+              <p>
+                Position the slider so that you're confident the photo to the
+                <strong>left</strong> shows someone who is <strong>definitely
+                darker</strong>, while the photo to the <strong>right</strong>
+                is <strong>lighter</strong> (can be similar in skin tone or lighter).
+              </p>
+            </div>
+            <p>
+              Click "Confirm" to confirm your pick and fix the lower bound.
+            </p>
+          </div>
+          <div id="training-step-1-dl" class="subpage">
+            <h2>Step 2: Find upper skin tone range</h2>
+            <p>
+              Great! Now it's time to find the upper bound. This means we
+              want to find out the <i>lightest</i> place the person can be placed on the scale.
+              Notice that the position for the lower bound (that we just
+              annotated) has been fixed in place. Like before, move the slider
+              handle for the upper bound to compare the current photo against
+              existing skin tone swatches.
+            </p>
+            <div class="alert alert-warning">
+              <p>
+                This time, position the slider handle so that the photo to the
+                <strong>right</strong> shows an example of a skin tone that is
+                <strong>lighter</strong> than the image subject, while the example of the skin tone to
+                the <strong>left</strong> is <strong>darker</strong> (can
+                be similar skin tone or darker).
+              </p>
+
+            </div>
+            <p>
+              The blue shaded range indicates the skin tone range of the current
+              photo. The photos that are in this range should be a similar skin tone
+           to the current photo (not drastically  lighter or darker).
+            </p>
+            <p>
+              Once you're done, click on "Done" to check your answer and
+              progress onto the main task.
+            </p>
+          </div>
+          <div id="training-step-0-ld" class="subpage">
+            <h2>Step 1: Find lower bound for skin tone</h2>
+            <p>
+              For this step we're trying to find the lower bound of the image subject’s skin tone.
+              This means we want to identify the <i>lightest</i> position the person
+              can be placed on the scale. Using the slider below, compare the current
+              photo against the existing skin tone types and example images on the scale.
+            </p>
+            <div class="alert alert-warning">
+              <p>
+                Scroll the slider handle from <strong>left to right</strong>.
+                Compare the current photo to the example images on its left and right as
+                you're sliding the handle. Use the skin tone swatches underneath the slider
+                to quickly skip over areas.
+              </p>
+              <p>
+                Position the slider so that you're confident the photo to the
+                <strong>left</strong> shows someone who is <strong>definitely
+                lighter</strong>, while the photo to the <strong>right</strong>
+                is <strong>darker</strong> (can be similar in skin tone or darker).
+              </p>
+            </div>
+            <p>
+              Click "Next" to confirm your pick and fix the lower bound.
+            </p>
+          </div>
+          <div id="training-step-1-ld" class="subpage">
+            <h2>Step 2: Find upper bound for skin tone</h2>
+            <p>
+              Great! Now it's time to find the upper bound. This means we
+              want to identify the <i>darkest</i> place the person can be placed on the scale.
+              Notice that the position for the lower bound (that we just
+              annotated) has been fixed in place. Like before, move the slider
+              handle for the upper bound to compare the current photo against the
+              existing example images.
+            </p>
+            <div class="alert alert-warning">
+              <p>
+                This time, position the slider handle so that the photo to the
+                <strong>right</strong> shows an example of a skin tone that is
+                <strong>darker</strong> than the image subject, while the example of the skin tone to
+                the <strong>left</strong> is <strong>lighter</strong> (can
+                be similar skin tone or lighter).
+              </p>
+            </div>
+            <p>
+              The blue shaded range indicates the skin tone range of the current
+              photo. The photos and skin tone swatches that are in this range should be a similar skin tone
+              to the current photo (not drastically  lighter or darker).
+            </p>
+            <p>
+              Once you're done, click on "Next" to check your answer and
+              progress to annotating your skin tone.
+            </p>
+          </div>
+          <div class="add-label-area">
+            <div id="example-label-slider" class="add-label-slider"></div>
+          </div>
+        </div>
+
+        <div id='report-explainer' class='page'>
+          <h1>Annotate Your Own Skin Tone</h1>
+          <p>
+            You have successfully completed the tutorial, we now ask for you annotate your own skin tone. Please complete this task carefully because this will also be collected as a part of the research study. Simply follow the steps outlined in the tutorial (Step 1: Find lower bound for skin tone and Step 2: Find upper bound for skin tone) and place the anonymous profile icon along the scale.
+          </p>
+          <div>
+            <strong>Instructions for Evaluating Your Skin Tone</strong>
+            <ul>
+              <li>Use the tone from the inside of your arm for a consistent tone not varied by tanning</li>
+              <li>Be in a well-lit area (preferably with natural lighting)</li>
+              <li>To improve accuracy, please use your apparent in-person skin tone rather than a photo of yourself</li>
+              <li>Do not consult with other individuals when annotating your skin tone</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="self-report" class="page">
+          <h1>Annotate Your Own Skin Tone</h1>
+          <div id="self-report-step-0-dl" class="subpage">
+            <h2>Step 1: Find lower bound for skin tone</h2>
+            <p>
+              For this step we're trying to find the lower bound of the image subject’s skin tone.
+              This means we want to identify the <i>darkest</i> position the person
+              can be placed on the scale. Using the slider below, compare the current
+              photo against the existing skin tone types and example images on the scale.
+            </p>
+            <div class="alert alert-warning">
+              <p>
+                Scroll the slider handle from <strong>left to right</strong>.
+                Compare the current photo to the example images on its left and right as
+                you're sliding the handle. Use the skin tone swatches underneath the slider
+                to quickly skip over areas.
+              </p>
+              <p>
+                Position the slider so that you're confident the photo to the
+                <strong>left</strong> shows someone who is <strong>definitely
+                darker</strong>, while the photo to the <strong>right</strong>
+                is <strong>lighter</strong> (can be similar in skin tone or lighter).
+              </p>
+            </div>
+            <p>
+              Click "Next" to confirm your pick and fix the lower bound.
+            </p>
+          </div>
+          <div id="self-report-step-1-dl" class="subpage">
+            <h2>Step 2: Find upper bound for skin tone</h2>
+            <p>
+              Great! Now it's time to find the upper bound. This means we
+              want to identify the <i>lightest</i> place the person can be placed on the scale.
+              Notice that the position for the lower bound (that we just
+              annotated) has been fixed in place. Like before, move the slider
+              handle for the upper bound to compare the current photo against the
+              existing example images.
+            </p>
+            <div class="alert alert-warning">
+              <p>
+                This time, position the slider handle so that the photo to the
+                <strong>right</strong> shows an example of a skin tone that is
+                <strong>lighter</strong> than the image subject, while the example of the skin tone to
+                the <strong>left</strong> is <strong>darker</strong> (can
+                be similar skin tone or darker).
+              </p>
+            </div>
+            <p>
+              The blue shaded range indicates the skin tone range of the current
+              photo. The photos and skin tone swatches that are in this range should be a similar skin tone
+              to the current photo (not drastically  lighter or darker).
+            </p>
+            <p>
+              Once you are satisfied with your placement, click "Next" to progess to the main task.
+            </p>
+          </div>
+          <div id="self-report-step-0-ld" class="subpage">
+            <h2>Step 1: Find lower bound for skin tone</h2>
+            <p>
+              For this step we're trying to find the lower bound of the image subject’s skin tone.
+              This means we want to identify the <i>lightest</i> position the person
+              can be placed on the scale. Using the slider below, compare the current
+              photo against the existing skin tone types and example images on the scale.
+            </p>
+            <div class="alert alert-warning">
+              <p>
+                Scroll the slider handle from <strong>left to right</strong>.
+                Compare the current photo to the example images on its left and right as
+                you're sliding the handle. Use the skin tone swatches underneath the slider
+                to quickly skip over areas.
+              </p>
+              <p>
+                Position the slider so that you're confident the photo to the
+                <strong>left</strong> shows someone who is <strong>definitely
+                lighter</strong>, while the photo to the <strong>right</strong>
+                is <strong>darker</strong> (can be similar in skin tone or darker).
+              </p>
+            </div>
+            <p>
+              Click "Next" to confirm your pick and fix the lower bound.
+            </p>
+          </div>
+          <div id="self-report-step-1-ld" class="subpage">
+            <h2>Step 2: Find upper bound for skin tone</h2>
+            <p>
+              Great! Now it's time to find the upper bound. This means we
+              want to identify the <i>darkest</i> place the person can be placed on the scale.
+              Notice that the position for the lower bound (that we just
+              annotated) has been fixed in place. Like before, move the slider
+              handle for the upper bound to compare the current photo against the
+              existing example images.
+            </p>
+            <div class="alert alert-warning">
+              <p>
+                This time, position the slider handle so that the photo to the
+                <strong>right</strong> shows an example of a skin tone that is
+                <strong>darker</strong> than the image subject, while the example of the skin tone to
+                the <strong>left</strong> is <strong>lighter</strong> (can
+                be similar skin tone or lighter).
+              </p>
+            </div>
+            <p>
+              The blue shaded range indicates the skin tone range of the current
+              photo. The photos and skin tone swatches that are in this range should be a similar skin tone
+              to the current photo (not drastically  lighter or darker).
+            </p>
+            <p>
+              Once you are satisfied with your placement, click "Next" to progess to the main task.
+            </p>
+          </div>
+          <div class="add-label-area">
+            <div id="self-report-label-slider" class="add-label-slider"></div>
+          </div>
+        </div>
+
+        <div id="intermission" class="page">
+          <h1>Main Task</h1>
+          <p>
+            <strong>Great job!</strong>
+            You've annotated your own skin tone! In the following section,
+            you will use the skin tone scale to annotate <strong>several images of subjects</strong>.
+          </p>
+          <p>
+            Please read the instructions carefully and apply your knowledge of
+            how to use the annotation interface from the tutorial and the annotation of your skin tone.
+          </p>
+        </div>
+
+        <div id="loading" class="page">
+          <h1>Loading next task</h1>
+          <p>
+            Please read the instructions carefully and apply your knowledge of
+            how to use the annotation interface from the training example.
+          </p>
+        </div>
+
+        <div id="task" class="page">
+          <h1>
+            Place the item on the scale
+            <span id="current-progress">(1/1)</span>
+          </h1>
+          <div id="label-step-0-dl" class="subpage">
+            <h2>Step 1: Find lower bound for skin tone</h2>
+            <p>
+              For this step we're trying to find the lower bound of the image subject’s skin tone.
+              This means we want to identify the <i>darkest</i> position the person
+              can be placed on the scale. Using the slider below, compare the current
+              photo against the existing skin tone types and example images on the scale.
+            </p>
+            <div class="alert alert-warning">
+              <p>
+                Scroll the slider handle from <strong>left to right</strong>.
+                Compare the current photo to the example images on its left and right as
+                you're sliding the handle. Use the skin tone swatches underneath the slider
+                to quickly skip over areas.
+              </p>
+              <p>
+                Position the slider so that you're confident the photo to the
+                <strong>left</strong> shows someone who is <strong>definitely
+                darker</strong>, while the photo to the <strong>right</strong>
+                is <strong>lighter</strong> (can be similar in skin tone or lighter).
+              </p>
+            </div>
+            <p>
+              Click "Next" to confirm your pick and fix the lower bound.
+            </p>
+          </div>
+          <div id="label-step-1-dl" class="subpage">
+            <h2>Step 2: Find upper bound for skin tone</h2>
+            <p>
+              Great! Now it's time to find the upper bound. This means we
+              want to identify the <i>lightest</i> place the person can be placed on the scale.
+              Notice that the position for the lower bound (that we just
+              annotated) has been fixed in place. Like before, move the slider
+              handle for the upper bound to compare the current photo against the
+              existing example images.
+            </p>
+            <div class="alert alert-warning">
+              <p>
+                This time, position the slider handle so that the photo to the
+                <strong>right</strong> shows an example of a skin tone that is
+                <strong>lighter</strong> than the image subject, while the example of the skin tone to
+                the <strong>left</strong> is <strong>darker</strong> (can
+                be similar skin tone or darker).
+              </p>
+            </div>
+            <p>
+              The blue shaded range indicates the skin tone range of the current
+              photo. The photos and skin tone swatches that are in this range should be a similar skin tone
+              to the current photo (not drastically  lighter or darker).
+            </p>
+            <p>
+              Once you're done, click on "Next" to continue to the next task.
+            </p>
+          </div>
+          <div id="label-step-0-ld" class="subpage">
+            <h2>Step 1: Find lower bound for skin tone</h2>
+            <p>
+              For this step we're trying to find the lower bound of the image subject’s skin tone.
+              This means we want to identify the <i>lightest</i> position the person
+              can be placed on the scale. Using the slider below, compare the current
+              photo against the existing skin tone types and example images on the scale.
+            </p>
+            <div class="alert alert-warning">
+              <p>
+                Scroll the slider handle from <strong>left to right</strong>.
+                Compare the current photo to the example images on its left and right as
+                you're sliding the handle. Use the skin tone swatches underneath the slider
+                to quickly skip over areas.
+              </p>
+              <p>
+                Position the slider so that you're confident the photo to the
+                <strong>left</strong> shows someone who is <strong>definitely
+                lighter</strong>, while the photo to the <strong>right</strong>
+                is <strong>darker</strong> (can be similar in skin tone or darker).
+              </p>
+            </div>
+            <p>
+              Click "Next" to confirm your pick and fix the lower bound.
+            </p>
+          </div>
+          <div id="label-step-1-ld" class="subpage">
+            <h2>Step 2: Find upper bound for skin tone</h2>
+            <p>
+              Great! Now it's time to find the upper bound. This means we
+              want to identify the <i>darkest</i> place the person can be placed on the scale.
+              Notice that the position for the lower bound (that we just
+              annotated) has been fixed in place. Like before, move the slider
+              handle for the upper bound to compare the current photo against the
+              existing example images.
+            </p>
+            <div class="alert alert-warning">
+              <p>
+                This time, position the slider handle so that the photo to the
+                <strong>right</strong> shows an example of a skin tone that is
+                <strong>darker</strong> than the image subject, while the example of the skin tone to
+                the <strong>left</strong> is <strong>lighter</strong> (can
+                be similar skin tone or lighter).
+              </p>
+            </div>
+            <p>
+              The blue shaded range indicates the skin tone range of the current
+              photo. The photos and skin tone swatches that are in this range should be a similar skin tone
+              to the current photo (not drastically  lighter or darker).
+            </p>
+            <p>
+              Once you're done, click on "Next" to continue to the next task.
+            </p>
+          </div>
+          <div class="add-label-area">
+            <div id="task-label-slider" class="add-label-slider"></div>
+          </div>
+        </div>
+
+        <div id="post-survey" class="page">
+          <!-- Likert-style format created by Pete Fecteau: https://codepen.io/Buttonpresser/pen/poXVo -->
+          <h1>Post-Annotation Survey</h1>
+          <p>
+            Please rate how much you agree with the following statements to the best of your ability and based on your experience with the task.
+          </p>
+          <form id="likert-form" class="likert" action="#">
+            <div class="form-control">
+              <label class="statement">I am <strong>confident</strong> in the labeling of my <u>own</u> skin tone.<br>
+                (Confident: feel sure to a significant degree)
+              </label>
+              <ul class='likert'>
+                <li>
+                  <input type="radio" name="likert0" value="strong_disagree" required="required">
+                  <label>Strongly disagree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert0" value="disagree" required="required">
+                  <label>Disagree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert0" value="neutral" required="required">
+                  <label>Neutral</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert0" value="agree" required="required">
+                  <label>Agree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert0" value="strong_agree" required="required">
+                  <label>Strongly agree</label>
+                </li>
+              </ul>
+            </div>
+            <div class="form-control">
+              <label class="statement">I am <strong>confident</strong> in my annotations of the images given in the main task.<br>
+                (Confident: feel sure to a significant degree)
+              </label>
+              <ul class='likert'>
+                <li>
+                  <input type="radio" name="likert1" value="strong_disagree" required="required">
+                  <label>Strongly disagree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert1" value="disagree" required="required">
+                  <label>Disagree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert1" value="neutral" required="required">
+                  <label>Neutral</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert1" value="agree" required="required">
+                  <label>Agree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert1" value="strong_agree" required="required">
+                  <label>Strongly agree</label>
+                </li>
+              </ul>
+            </div>
+            <div class="form-control">
+              <label class="statement">I <strong>considered</strong> the race and/or ethnicity of the image subject while annotating.<br>
+              (Consider: take into account, especially before making a decision)
+              </label>
+              <div class="alert alert-warning">
+                Throughout history people have been categorized by the color of their skin by other individuals placed in positions of social power. These categorizations were used to enforce harmful social hierarchies based on racism and colorism (i.e. <a href="https://allthatsinteresting.com/brown-paper-bag-test" target="_blank">Jim Crow era in Southern US</a>). Even today in the United States, people have different life experiences based on the long-term impact of skin tone categorizations (i.e.<a href="https://www.tandfonline.com/doi/full/10.1080/01419870.2018.1508736?scroll=top&needAccess=true" target="_blank">arrest rates in the United States</a>). Given this particular context, indicate how much you agree with the following statements:
+              </div>
+              <ul class='likert'>
+                <li>
+                  <input type="radio" name="likert2" value="strong_disagree" required="required">
+                  <label>Strongly disagree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert2" value="disagree" required="required">
+                  <label>Disagree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert2" value="neutral" required="required">
+                  <label>Neutral</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert2" value="agree" required="required">
+                  <label>Agree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert2" value="strong_agree" required="required">
+                  <label>Strongly agree</label>
+                </li>
+              </ul>
+            </div>
+            <div class="form-control">
+              <label class="statement">
+              I felt <strong>comfortable</strong> annotating the skin tone of others in the main task.
+              </label>
+              <p>(Comfortable: not emotionally, mentally, or physically stressed)</p>
+              <ul class='likert'>
+                <li>
+                  <input type="radio" name="likert3" value="strong_disagree" required="required">
+                  <label>Strongly disagree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert3" value="disagree" required="required">
+                  <label>Disagree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert3" value="neutral" required="required">
+                  <label>Neutral</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert3" value="agree" required="required">
+                  <label>Agree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert3" value="strong_agree" required="required">
+                  <label>Strongly agree</label>
+                </li>
+              </ul>
+            </div>
+            <div class="form-control">
+              <label class="statement">
+                I felt <strong>comfortable</strong> annotating my <u>own</u> skin tone.
+
+              </label>
+              <p>(Comfortable: not emotionally, mentally, or physically stressed)</p>
+                <ul class='likert'>
+                 <li>
+                  <input type="radio" name="likert4" value="strong_disagree" required="required">
+                  <label>Strongly disagree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert4" value="disagree" required="required">
+                  <label>Disagree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert4" value="neutral" required="required">
+                  <label>Neutral</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert4" value="agree" required="required">
+                  <label>Agree</label>
+                </li>
+                <li>
+                  <input type="radio" name="likert4" value="strong_agree" required="required">
+                  <label>Strongly agree</label>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+        <div id="survey" class="page">
+          <h1>All done!</h1>
+            <p>That's all for now. Thanks for participating in our study!</p>
+            <p>
+              If you have any comments about the study, feel free to tell us through
+              the input area below. This is optional.
+            </p>
+            <div id="final-form-area">
+            </div>
+        </div>
+        <div id="exit" class="page">
+          <p>
+          You will now exit this assignment without submitting your responses and you will not be eligible for full payment. However, you will ear partial pay based on how much of the task you have completed. Thank you for your time and have a great day!
+          </p>
+        </div>
+      </div>
+      <div class="padded high-z">
+        <div class="left">
+          <a id="exit-btn" class="button secondary">Exit</a>
+        </div>
+        <div class="centered">
+          <a id="next-btn" href="#" class="button">Next</a>
+        </div>
+      </div>
+    </div> <!-- closes container -->
+  </body>
+</html>
