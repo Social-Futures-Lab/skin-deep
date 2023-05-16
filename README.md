@@ -3,7 +3,7 @@
 Supplemental repository of code and data related to our paper `Skin Deep: Investigating Subjectivity in Skin Tone Annotations for Computer Vision Benchmark Datasets` from FAccT '23.
 
 Authors: Teanna Barrett, Quan Ze Chen, Amy X. Zhang
-
+Link: [DOI](https://doi.org/10.1145/3593013.3594114) | [ArXiv](https://arxiv.org/abs/to.be.issued)
 ![Overview Diagram](https://github.com//Social-Futures-Lab/skin-deep/blob/main/overview.png?raw=true)
 
 Our work is the first to investigate the skin tone annotation process as a sociotechnical project. We surveyed recent skin tone annotation procedures and conducted annotation experiments to examine how subjective understandings of skin tone are embedded in skin tone annotation procedures.
