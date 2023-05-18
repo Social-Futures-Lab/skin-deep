@@ -4,7 +4,7 @@ Supplemental repository of code and data related to our paper `Skin Deep: Invest
 
 Authors: Teanna Barrett, Quan Ze Chen, Amy X. Zhang
 
-Link: [DOI](https://doi.org/10.1145/3593013.3594114) | [ArXiv](https://arxiv.org/abs/to.be.issued)
+Link: [DOI](https://doi.org/10.1145/3593013.3594114) | [ArXiv](https://arxiv.org/abs/2305.09072)
 
 ![Overview Diagram](https://github.com//Social-Futures-Lab/skin-deep/blob/main/overview.png?raw=true)
 
